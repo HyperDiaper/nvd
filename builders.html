@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NVD Builders & Developers — Premium Construction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+/* HERO */
+.bd-hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;background:var(--ink);padding-top:72px;position:relative;overflow:hidden}
+.bd-hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 2.5rem}
+.bd-hero-left .eyebrow{color:var(--copper)}
+.bd-hero h1{color:var(--white);margin-bottom:1.25rem}
+.bd-hero h1 em{font-style:italic;color:var(--copper)}
+.bd-sub{font-size:1rem;color:rgba(255,255,255,.55);max-width:440px;line-height:1.85;margin-bottom:2.5rem}
+.bd-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.bd-stats{display:flex;gap:2.5rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.bds-n{font-family:var(--font-heading);font-size:2.6rem;font-weight:700;color:var(--white);line-height:1}
+.bds-l{font-family:'DM Mono',monospace;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.3rem}
+.bd-hero-right{position:relative;overflow:hidden}
+.bd-hero-right img{width:100%;height:100%;object-fit:cover;object-position:top;opacity:.7;display:block;transition:transform 8s ease;transform:scale(1.06);animation:imgZoom 12s ease-in-out infinite alternate}
+@keyframes imgZoom{to{transform:scale(1)}}
+.bd-hero-right-ov{position:absolute;inset:0;background:linear-gradient(to right,var(--ink) 0%,transparent 35%)}
+.bd-logo-wrap{height:64px;margin-bottom:2rem}
+.bd-logo-wrap img{height:100%;width:auto;filter:brightness(0) invert(1)}
+/* Grid lines bg */
+.bd-lines{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;animation:gridDrift 28s linear infinite}
+@keyframes gridDrift{to{background-position:60px 60px}}
+
+/* MOSAIC */
+.mosaic-sec{background:var(--cream);padding:6rem 0}
+.mosaic-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap}
+.mosaic-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;grid-template-rows:300px 260px;gap:.75rem}
+.mi{overflow:hidden;position:relative;cursor:pointer;background:#111}
+.mi.span2{grid-row:1/3}
+.mi img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,.68,0,1.2);display:block}
+.mi:hover img{transform:scale(1.07)}
+.mi-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 55%);opacity:0;transition:opacity .35s}
+.mi:hover .mi-ov{opacity:1}
+.mi-badge{position:absolute;top:.75rem;right:.75rem;background:var(--copper);color:var(--white);font-family:'DM Mono',monospace;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .65rem}
+.mi-label{position:absolute;bottom:.9rem;left:.9rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;color:var(--white);opacity:0;transition:opacity .35s;letter-spacing:.03em}
+.mi:hover .mi-label{opacity:1}
+
+/* SERVICES */
+.build-sec{background:var(--white)}
+.build-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--rule);margin-top:2.5rem}
+.bc{background:var(--white);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background var(--t)}
+.bc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.22,.68,0,1.2)}
+.bc:hover{background:var(--cream)}
+.bc:hover::after{transform:scaleX(1)}
+.bc-ico{width:44px;height:44px;margin-bottom:1.25rem}
+.bc-ico svg{fill:var(--copper)}
+.bc h4{font-family:var(--font-heading);color:var(--ink);font-size:1.15rem;margin-bottom:.5rem}
+.bc p{font-size:.84rem}
+
+/* NRI */
+.nri-sec{background:var(--ink);padding:7rem 0;position:relative;overflow:hidden}
+.nri-sec .bldg-bg{bottom:0;left:0;right:0}
+.nri-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;position:relative;z-index:1}
+.nri-content h2{color:var(--white);margin-bottom:1rem}
+.nri-content p{color:rgba(255,255,255,.55);margin-bottom:1rem}
+.nri-pts{display:flex;flex-direction:column;gap:.75rem;margin-top:1.75rem}
+.nri-pt{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:rgba(255,255,255,.04);border-left:2px solid var(--copper);transition:background var(--t)}
+.nri-pt:hover{background:rgba(0,75,172,.1)}
+.nri-pt-ico{flex-shrink:0;width:20px;height:20px;margin-top:2px}
+.nri-pt-ico svg{fill:var(--copper)}
+.nri-pt h5{font-family:var(--font-heading);color:var(--white);font-size:1rem;margin-bottom:.15rem}
+.nri-pt p{font-size:.8rem;color:rgba(255,255,255,.45);margin:0;line-height:1.65}
+.nri-kpis{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.nri-kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:2rem 1.5rem;text-align:center;transition:all var(--t)}
+.nri-kpi:hover{background:rgba(0,75,172,.1);border-color:rgba(0,75,172,.3);transform:translateY(-3px)}
+.nri-n{font-family:var(--font-heading);font-size:2.8rem;font-weight:700;color:var(--white);line-height:1}
+.nri-l{font-family:'DM Mono',monospace;font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.4rem}
+
+/* PROJECTS TABS */
+.proj-sec{background:var(--cream)}
+.ptabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:2.5rem;overflow-x:auto}
+.ptab{font-family:'DM Sans',sans-serif;font-size:.73rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);padding:.8rem 1.75rem;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all var(--t);white-space:nowrap}
+.ptab.on{color:var(--ink);border-bottom-color:var(--copper)}
+.ptab:hover:not(.on){color:var(--ink)}
+.ppanel{display:none}
+.ppanel.on{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.pc{background:var(--white);overflow:hidden;box-shadow:var(--sh-sm);transition:box-shadow var(--t),transform var(--t);cursor:pointer}
+.pc:hover{box-shadow:var(--sh-lg);transform:translateY(-5px)}
+.pci{width:100%;height:210px;overflow:hidden;position:relative}
+.pci img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,.68,0,1.2);display:block}
+.pc:hover .pci img{transform:scale(1.08)}
+.pc-badge{position:absolute;top:.75rem;left:.75rem;background:var(--copper);color:var(--white);font-family:'DM Mono',monospace;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .65rem}
+.pc-body{padding:1.35rem 1.5rem 1.5rem}
+.pc-body h4{font-family:var(--font-heading);color:var(--ink);font-size:1.1rem;margin-bottom:.3rem}
+.pc-body p{font-size:.8rem;color:var(--soft);line-height:1.65}
+.pc-loc{font-family:'DM Mono',monospace;font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);margin-top:.55rem}
+
+/* PROCESS */
+.proc-sec{background:var(--white);position:relative;overflow:hidden}
+.proc-steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative;margin-top:3rem}
+.proc-steps::before{content:'';position:absolute;top:34px;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,var(--blue),transparent);opacity:.25;z-index:0}
+.ps{text-align:center;padding:0 .5rem;position:relative;z-index:1}
+.ps-num{width:68px;height:68px;border:1.5px solid var(--blue-lt);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;background:var(--white);transition:all .3s cubic-bezier(.22,.68,0,1.2)}
+.ps:hover .ps-num{background:var(--blue);border-color:var(--blue);transform:scale(1.12)}
+.ps-num span{font-family:var(--font-heading);font-size:1.4rem;font-weight:700;color:var(--blue);transition:color var(--t)}
+.ps:hover .ps-num span{color:var(--white)}
+.ps-title{font-family:var(--font-heading);font-size:.95rem;color:var(--ink);font-weight:600;margin-bottom:.4rem}
+.ps-desc{font-size:.76rem;color:var(--soft);line-height:1.65}
+
+/* TESTIMONIALS */
+.test-sec{background:var(--ink);position:relative;overflow:hidden}
+.test-sec .bldg-bg{bottom:0;left:0;right:0}
+.test-head{text-align:center;margin-bottom:3.5rem}
+.test-head h2{color:var(--white)}
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;position:relative;z-index:2}
+.vid-wrap{}
+.vid-frame{position:relative;padding-top:56.25%;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.vid-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-cap{text-align:center;margin-top:.75rem;font-family:'DM Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.tquotes{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;position:relative;z-index:2}
+.tcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2.5rem;transition:background var(--t)}
+.tcard:hover{background:var(--blue-lt);border-color:var(--blue-glow)}
+.tqm{font-family:var(--font-heading);font-size:5rem;line-height:.8;color:var(--blue);opacity:.5;display:block;margin-bottom:.5rem}
+.tcard p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.85;font-style:italic;margin-bottom:1.5rem}
+.tauthor{font-family:'DM Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.tauthor span{color:var(--blue)}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.95);flex-direction:column;align-items:center;justify-content:center}
+.lb.on{display:flex}
+.lb-x{position:absolute;top:1.5rem;right:2rem;color:rgba(255,255,255,.5);font-size:2.2rem;cursor:pointer;background:none;border:none;line-height:1;transition:color var(--t)}
+.lb-x:hover{color:var(--white)}
+.lb-img{max-width:90vw;max-height:78vh;object-fit:contain;display:block}
+.lb-cap{font-family:'DM Mono',monospace;font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);text-align:center;margin-top:1rem}
+.lb-ctrl{display:flex;gap:1rem;margin-top:1.5rem;align-items:center}
+.lb-btn{background:rgba(255,255,255,.07);color:var(--white);border:1px solid rgba(255,255,255,.12);padding:.6rem 1.5rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:all var(--t);border-radius:2px}
+.lb-btn:hover{background:var(--copper);border-color:var(--copper)}
+.lb-cnt{font-family:'DM Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.35);min-width:60px;text-align:center}
+
+@media(max-width:960px){
+  .bd-hero{grid-template-columns:1fr}.bd-hero-right{display:none}.bd-hero-left{padding:8rem 1.5rem 5rem}
+  .mosaic-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.mi.span2{grid-row:auto}
+  .build-grid{grid-template-columns:1fr 1fr}.nri-grid{grid-template-columns:1fr;gap:3rem}
+  .ppanel.on{grid-template-columns:1fr 1fr}.proc-steps{grid-template-columns:1fr 1fr;gap:2rem}
+  .proc-steps::before{display:none}.vids,.tquotes{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .build-grid,.ppanel.on,.nri-kpis,.proc-steps{grid-template-columns:1fr}
+  .mosaic-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<section class="bd-hero">
+  <div class="bd-lines"></div>
+  <div class="bd-hero-left">
+    <div class="bd-logo-wrap reveal fb"><img src="img/bd_logo.png" alt="NVD Builders & Developers"/></div>
+    <h1 class="reveal fb d1">Build Your<br/><em>Dream Home.</em><br/>Without the Stress.</h1>
+    <p class="bd-sub reveal fb d2">Premium residential and industrial construction in Maharashtra — with immersive 3D, AR & VR visualisation, turnkey delivery, and a remote monitoring app so NRIs can build from anywhere.</p>
+    <div class="bd-btns reveal fb d3">
+      <a href="contact.html" class="btn btn-blue btn-pill">Book Free Consultation</a>
+      <a href="#projects" class="btn btn-ghost-white btn-pill">View Projects</a>
+    </div>
+    <div class="bd-stats reveal fb d4">
+      <div><div class="bds-n" data-count="100" data-suffix="+">0+</div><div class="bds-l">Projects</div></div>
+      <div><div class="bds-n" data-count="10" data-suffix="+">0+</div><div class="bds-l">Years</div></div>
+      <div><div class="bds-n" data-count="3" data-suffix="">0</div><div class="bds-l">States</div></div>
+    </div>
+  </div>
+  <div class="bd-hero-right reveal fr d2">
+    <img src="img/hero_render_1.jpg" alt="NVD — Premium Villa"/>
+    <div class="bd-hero-right-ov"></div>
+  </div>
+</section>
+
+<!-- MOSAIC -->
+<section class="mosaic-sec">
+  <div class="wrap">
+    <div class="mosaic-head">
+      <div><span class="eyebrow reveal fb">Visualisation</span><h2 class="reveal fb d1" style="color:var(--ink)">See Your Home<br/><em>Before It's Built</em></h2></div>
+      <p class="reveal fb d2" style="max-width:320px;text-align:right">Immersive 3D, AR & VR — experience every room before construction begins.</p>
+    </div>
+    <div class="mosaic-grid">
+      <div class="mi span2 reveal fs" onclick="openLb(0)"><img src="img/panoramic_1.jpg" alt="Bungalow render"/><div class="mi-ov"></div><span class="mi-badge">3D Render</span><div class="mi-label">Luxury Bungalow · Latur</div></div>
+      <div class="mi reveal fs d1" onclick="openLb(1)"><img src="img/hero_render_2.jpg" alt="Villa render"/><div class="mi-ov"></div><span class="mi-badge">3D Render</span><div class="mi-label">Premium Villa · Amravati</div></div>
+      <div class="mi reveal fs d2" onclick="openLb(2)"><img src="img/panoramic_2.jpg" alt="Duplex render"/><div class="mi-ov"></div><span class="mi-badge">3D Render</span><div class="mi-label">Duplex Design</div></div>
+      <div class="mi reveal fs d3" onclick="openLb(3)"><img src="img/hero_render_3.jpg" alt="House render"/><div class="mi-ov"></div><span class="mi-badge">3D Render</span><div class="mi-label">Modern Home</div></div>
+      <div class="mi reveal fs d4" onclick="openLb(4)"><img src="img/interior_1.jpg" alt="Interior"/><div class="mi-ov"></div><span class="mi-badge">Completed</span><div class="mi-label">Finished Interior</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="build-sec section">
+  <div class="wrap">
+    <span class="eyebrow reveal fb">What We Build</span>
+    <h2 class="reveal fb d1">Our Specialisations</h2>
+    <div class="build-grid">
+      <div class="bc reveal fs"><div class="bc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h4>Houses & Bungalows</h4><p>Bespoke 2–5 BHK homes with individual character and premium finishes throughout.</p></div>
+      <div class="bc reveal fs d1"><div class="bc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M2 20h20M4 20V10M8 20V4M12 20V10M16 20V4M20 20V10"/></svg></div><h4>Duplex & Row Houses</h4><p>Community-living developments that balance private comfort with neighbourhood warmth.</p></div>
+      <div class="bc reveal fs d2"><div class="bc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div><h4>High Rise Buildings</h4><p>Multi-storey residential & mixed-use structures built for longevity and modern living.</p></div>
+      <div class="bc reveal fs"><div class="bc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="12" rx="2"/><path d="M6 2h4v4H6zM14 2h4v4h-4z"/></svg></div><h4>Factories & Industrial</h4><p>Purpose-built facilities designed for efficiency, compliance, and scalability.</p></div>
+      <div class="bc reveal fs d1"><div class="bc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h4>3D · AR · VR Visualisation</h4><p>Experience every room in immersive detail before construction begins.</p></div>
+      <div class="bc reveal fs d2"><div class="bc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Turnkey & NRI Solutions</h4><p>Complete design-to-handover with remote monitoring app — build from anywhere.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NRI -->
+<section class="nri-sec">
+  <div class="bldg-bg"></div>
+  <div class="wrap">
+    <div class="nri-grid">
+      <div>
+        <span class="eyebrow eyebrow-light reveal fb">Built for NRIs</span>
+        <h2 class="reveal fb d1" style="color:var(--white)">Build From Anywhere.<br/><em style="color:var(--copper)">We Handle Everything.</em></h2>
+        <div class="rule reveal fb d1"></div>
+        <p class="reveal fb d2">For NRIs across the Gulf and beyond — NVD Builders is your trusted partner back home. We eliminate every obstacle between you and your dream home in India.</p>
+        <div class="nri-pts reveal fb d3">
+          <div class="nri-pt"><div class="nri-pt-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h5>Immersive Visualisation</h5><p>3D, AR and VR walkthroughs — experience your home before it's built.</p></div></div>
+          <div class="nri-pt"><div class="nri-pt-ico"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><div><h5>Real-Time Monitoring App</h5><p>Track your build progress from anywhere in the world.</p></div></div>
+          <div class="nri-pt"><div class="nri-pt-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h5>Full Turnkey Delivery</h5><p>Design, permits, construction, interior and handover — all managed for you.</p></div></div>
+        </div>
+      </div>
+      <div class="nri-kpis reveal fr d2">
+        <div class="nri-kpi"><div class="nri-n" data-count="100" data-suffix="+">0+</div><div class="nri-l">Projects Delivered</div></div>
+        <div class="nri-kpi"><div class="nri-n" data-count="10" data-suffix="+">0+</div><div class="nri-l">Years Building</div></div>
+        <div class="nri-kpi"><div class="nri-n">2–5<br/><span style="font-size:1.2rem">BHK</span></div><div class="nri-l">All Configs</div></div>
+        <div class="nri-kpi"><div class="nri-n">🇮🇳</div><div class="nri-l">Maharashtra & Beyond</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="proj-sec section" id="projects">
+  <div class="wrap">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2rem;gap:2rem;flex-wrap:wrap">
+      <div><span class="eyebrow reveal fb">Our Work</span><h2 class="reveal fb d1" style="color:var(--ink)">Project Gallery</h2></div>
+      <a href="contact.html" class="btn btn-dark btn-pill reveal fb">Start Your Project</a>
+    </div>
+    <div class="ptabs">
+      <button class="ptab on" data-p="residential">Residential</button>
+      <button class="ptab" data-p="construction">Under Construction</button>
+      <button class="ptab" data-p="interiors">Interiors & Kitchens</button>
+      <button class="ptab" data-p="development">Development</button>
+    </div>
+    <div class="ppanel on" id="pp-residential">
+      <div class="pc spotlight-card reveal fs" onclick="openLb(5)"><div class="pci"><span class="pc-badge">Completed</span><img src="img/completed_2.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Completed Residence</h4><p>Contemporary 3-storey residential building with premium facade finishes.</p><div class="pc-loc">📍 Amravati, Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(6)"><div class="pci"><span class="pc-badge">Completed</span><img src="img/completed_5.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Premium Bungalow</h4><p>4 BHK luxury bungalow with striking facade and landscaped frontage.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(7)"><div class="pci"><span class="pc-badge">Completed</span><img src="img/completed_6.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Duplex Residence</h4><p>G+1 duplex with elegant exterior cladding and integrated gate design.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs" onclick="openLb(8)"><div class="pci"><span class="pc-badge">3D Render</span><img src="img/hero_render_1.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Villa 3D Visualisation</h4><p>Photorealistic render showing client-approved design before construction.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(9)"><div class="pci"><span class="pc-badge">3D Render</span><img src="img/hero_render_2.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Premium Villa Render</h4><p>Detailed exterior render with landscaping and material finishes.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(10)"><div class="pci"><span class="pc-badge">3D Render</span><img src="img/panoramic_1.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Panoramic Bungalow</h4><p>Wide-angle 3D visualisation showing full frontage and streetscape context.</p><div class="pc-loc">📍 Latur</div></div></div>
+    </div>
+    <div class="ppanel" id="pp-construction">
+      <div class="pc spotlight-card reveal fs" onclick="openLb(11)"><div class="pci"><span class="pc-badge">In Progress</span><img src="img/construction_1.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Multi-Storey Construction</h4><p>RCC frame construction — multi-residential building in Amravati.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(12)"><div class="pci"><span class="pc-badge">In Progress</span><img src="img/construction_2.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Residential Building</h4><p>Multi-floor structure mid-construction, showing quality of structural work.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(13)"><div class="pci"><span class="pc-badge">In Progress</span><img src="img/construction_3.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Site Under Construction</h4><p>Active construction showing foundation work and early structural progress.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs" onclick="openLb(14)"><div class="pci"><span class="pc-badge">In Progress</span><img src="img/construction_4.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Duplex Construction</h4><p>Duplex villa showing brickwork and concrete frame progress.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(15)"><div class="pci"><span class="pc-badge">In Progress</span><img src="img/construction_5.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Residential Progress</h4><p>Construction showcasing the precision of NVD's build methodology.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(16)"><div class="pci"><span class="pc-badge">Completed</span><img src="img/completed_4.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Completed Facade</h4><p>Finished residential facade — NVD's attention to exterior detailing.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+    </div>
+    <div class="ppanel" id="pp-interiors">
+      <div class="pc spotlight-card reveal fs" onclick="openLb(17)"><div class="pci"><span class="pc-badge">Interior</span><img src="img/interior_3.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Living Room Interior</h4><p>Completed residential living space with premium fittings and ambient lighting.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(18)"><div class="pci"><span class="pc-badge">Interior</span><img src="img/interior_4.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Residential Interior</h4><p>Modern space with custom ceiling design, lighting and quality materials.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(19)"><div class="pci"><span class="pc-badge">Interior</span><img src="img/interior_5.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Full Interior Fit-Out</h4><p>Complete transformation with custom woodwork and false ceilings.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs" onclick="openLb(20)"><div class="pci"><span class="pc-badge">Kitchen</span><img src="img/kitchen_1.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Modular Kitchen — Green</h4><p>Custom kitchen with granite worktop and integrated appliances.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(21)"><div class="pci"><span class="pc-badge">Kitchen</span><img src="img/kitchen_3.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Premium Dark Kitchen</h4><p>Sleek dark-finish kitchen with soft-close drawers and chimney.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(22)"><div class="pci"><span class="pc-badge">Kitchen</span><img src="img/kitchen_5.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Kitchen Installation</h4><p>Full modular kitchen — custom cabinets and granite slab worktop.</p><div class="pc-loc">📍 Amravati</div></div></div>
+    </div>
+    <div class="ppanel" id="pp-development">
+      <div class="pc spotlight-card reveal fs" onclick="openLb(23)"><div class="pci"><span class="pc-badge">Development</span><img src="img/development_3.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Site Development</h4><p>Road laying, drainage channels and comprehensive site infrastructure.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(24)"><div class="pci"><span class="pc-badge">Development</span><img src="img/development_4.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Township Infrastructure</h4><p>Internal roads, drainage, boundary walls and plot levelling.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(25)"><div class="pci"><span class="pc-badge">Development</span><img src="img/development_5.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Road & Drainage Works</h4><p>Road construction with compaction and integrated drainage systems.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs" onclick="openLb(26)"><div class="pci"><span class="pc-badge">Development</span><img src="img/development_1.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Site Preparation — Loni</h4><p>Excavation, levelling and foundation trenching.</p><div class="pc-loc">📍 Loni, Maharashtra</div></div></div>
+      <div class="pc spotlight-card reveal fs d1" onclick="openLb(27)"><div class="pci"><span class="pc-badge">Completed</span><img src="img/completed_1.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Completed Project</h4><p>A finished property — the end result of NVD's full service.</p><div class="pc-loc">📍 Amravati</div></div></div>
+      <div class="pc spotlight-card reveal fs d2" onclick="openLb(28)"><div class="pci"><span class="pc-badge">Interior</span><img src="img/interior_6.jpg" loading="lazy" alt=""/></div><div class="pc-body"><h4>Completed Interior</h4><p>Final fit-out showing quality and attention to detail.</p><div class="pc-loc">📍 Maharashtra</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="proc-sec section">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1;text-align:center">
+    <span class="eyebrow eyebrow-dark reveal fb" style="justify-content:center">How We Work</span>
+    <h2 class="reveal fb d1">Our 5-Step Process</h2>
+    <div class="rule rule-c reveal fb d1"></div>
+    <div class="proc-steps" style="margin-top:3rem">
+      <div class="ps reveal fs"><div class="ps-num"><span>01</span></div><div class="ps-title">Consultation</div><p class="ps-desc">Free — understand your vision, budget and timeline.</p></div>
+      <div class="ps reveal fs d1"><div class="ps-num"><span>02</span></div><div class="ps-title">Design & 3D</div><p class="ps-desc">Plans, renders, AR & VR for your full approval.</p></div>
+      <div class="ps reveal fs d2"><div class="ps-num"><span>03</span></div><div class="ps-title">Planning</div><p class="ps-desc">Permits, scheduling and budget finalisation.</p></div>
+      <div class="ps reveal fs d3"><div class="ps-num"><span>04</span></div><div class="ps-title">Construction</div><p class="ps-desc">On-site execution with real-time app monitoring.</p></div>
+      <div class="ps reveal fs d4"><div class="ps-num"><span>05</span></div><div class="ps-title">Handover</div><p class="ps-desc">Final inspection, docs and after-sales support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="test-sec section">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:2">
+    <div class="test-head"><span class="eyebrow eyebrow-light reveal fb" style="justify-content:center">Client Stories</span><h2 class="reveal fb d1" style="color:var(--white)">Hear From Our Clients</h2></div>
+    <div class="vids">
+      <div class="reveal fs"><div class="vid-frame"><iframe src="https://www.youtube.com/embed/qHNMZPjZcy0" title="NVD Client Testimonial 1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="vid-cap">Client Testimonial · Project Review</div></div>
+      <div class="reveal fs d1"><div class="vid-frame"><iframe src="https://www.youtube.com/embed/ELp9wonkzkI" title="NVD Client Testimonial 2" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe></div><div class="vid-cap">Client Testimonial · Home Owner</div></div>
+    </div>
+    <div class="tquotes">
+      <div class="tcard reveal fs"><span class="tqm">"</span><p>NVD Builders made our dream home a reality. The 3D walkthrough was incredible — we knew exactly what we were getting. Delivered on time, within budget, and better than imagined.</p><div class="tauthor">— Satisfied Client · <span>Amravati, Maharashtra</span></div></div>
+      <div class="tcard reveal fs d1"><span class="tqm">"</span><p>As an NRI in Dubai, I was nervous about building back home. NVD handled everything — permits, construction, interior, handover. The monitoring app gave complete peace of mind.</p><div class="tauthor">— NRI Home Owner · <span>Dubai, UAE</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div><h2 class="reveal fb" style="color:var(--white)">Ready to Start Building?</h2><p class="reveal fb d1">Book your free consultation — no obligation.</p></div>
+    <div class="cta-btns reveal fb d2"><a href="contact.html" class="btn btn-blue btn-pill">Book Free Consult</a><a href="tel:+919730266903" class="btn btn-ghost-white btn-pill">+91 97302 66903</a></div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="lb-x" onclick="closeLb()">×</button>
+  <img class="lb-img" id="lbImg" src="" alt=""/>
+  <div class="lb-cap" id="lbCap"></div>
+  <div class="lb-ctrl"><button class="lb-btn" onclick="lbPrev()">← Prev</button><span class="lb-cnt" id="lbCnt"></span><button class="lb-btn" onclick="lbNext()">Next →</button></div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+initPage('builders');
+document.querySelectorAll('.ptab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.ptab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.ppanel').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    document.getElementById('pp-'+t.dataset.p).classList.add('on');
+  });
+});
+const imgs=[
+  {s:'img/panoramic_1.jpg',c:'Luxury Bungalow · 3D Render · Latur'},
+  {s:'img/hero_render_2.jpg',c:'Premium Villa · 3D Render · Amravati'},
+  {s:'img/panoramic_2.jpg',c:'Duplex Design · 3D Render'},
+  {s:'img/hero_render_3.jpg',c:'Modern Home · 3D Render'},
+  {s:'img/interior_1.jpg',c:'Finished Interior'},
+  {s:'img/completed_2.jpg',c:'Completed Residence · Amravati'},
+  {s:'img/completed_5.jpg',c:'Premium Bungalow · Maharashtra'},
+  {s:'img/completed_6.jpg',c:'Duplex Residence'},
+  {s:'img/hero_render_1.jpg',c:'Villa Visualisation · Amravati'},
+  {s:'img/hero_render_2.jpg',c:'Premium Villa Render'},
+  {s:'img/panoramic_1.jpg',c:'Panoramic Bungalow · Latur'},
+  {s:'img/construction_1.jpg',c:'Multi-Storey Construction · Amravati'},
+  {s:'img/construction_2.jpg',c:'Residential Building · Under Construction'},
+  {s:'img/construction_3.jpg',c:'Construction Site · Maharashtra'},
+  {s:'img/construction_4.jpg',c:'Duplex · Under Construction'},
+  {s:'img/construction_5.jpg',c:'Residential Progress'},
+  {s:'img/completed_4.jpg',c:'Completed Facade'},
+  {s:'img/interior_3.jpg',c:'Living Room Interior · Amravati'},
+  {s:'img/interior_4.jpg',c:'Residential Interior'},
+  {s:'img/interior_5.jpg',c:'Full Interior Fit-Out'},
+  {s:'img/kitchen_1.jpg',c:'Modular Kitchen — Green'},
+  {s:'img/kitchen_3.jpg',c:'Premium Dark Kitchen · Amravati'},
+  {s:'img/kitchen_5.jpg',c:'Kitchen Installation'},
+  {s:'img/development_3.jpg',c:'Site Development · Amravati'},
+  {s:'img/development_4.jpg',c:'Township Infrastructure'},
+  {s:'img/development_5.jpg',c:'Road & Drainage Works'},
+  {s:'img/development_1.jpg',c:'Site Preparation · Loni'},
+  {s:'img/completed_1.jpg',c:'Completed Project · Amravati'},
+  {s:'img/interior_6.jpg',c:'Completed Interior'},
+];
+let idx=0;
+function openLb(i){idx=i;updLb();document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden'}
+function closeLb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
+function updLb(){document.getElementById('lbImg').src=imgs[idx].s;document.getElementById('lbCap').textContent=imgs[idx].c;document.getElementById('lbCnt').textContent=(idx+1)+' / '+imgs.length}
+function lbNext(){idx=(idx+1)%imgs.length;updLb()}
+function lbPrev(){idx=(idx-1+imgs.length)%imgs.length;updLb()}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)closeLb()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')lbNext();if(e.key==='ArrowLeft')lbPrev()});
+</script>
+</body></html>

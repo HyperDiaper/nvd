@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NVD Group — Build · Consult · Grow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg-img{position:absolute;inset:0;background:url('img/panoramic_1.jpg') center/cover no-repeat;opacity:.22;transform:scale(1.08);animation:heroZoom 14s ease-in-out infinite alternate}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-bg-grad{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,26,26,.95) 35%,rgba(27,58,107,.5) 100%)}
+.hero-lines{position:absolute;inset:0;z-index:4;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px;animation:gridDrift 30s linear infinite}
+@keyframes gridDrift{to{background-position:64px 64px}}
+.hero-left{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:8rem 3rem 5rem 3rem}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.4rem 1rem;border-radius:100px;margin-bottom:2.5rem;width:fit-content}
+.hero-tag-dot{width:6px;height:6px;background:var(--copper);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-tag span{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.hero h1{color:var(--white);font-size:clamp(3rem,5.5vw,5.2rem);line-height:1.05;margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.6)}
+.hero-desc{font-size:1rem;color:rgba(255,255,255,.55);max-width:440px;line-height:1.85;margin-bottom:2.5rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stats{display:flex;gap:2.5rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.hs-n{font-family:var(--font-heading);font-weight:900;font-size:2.8rem;line-height:1;}
+.hs-l{font-family:'DM Mono',monospace;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.3rem}
+/* Right panel */
+.hero-right{position:relative;z-index:1}
+.hero-right-img-wrap{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 12%);mask-image:linear-gradient(to right,transparent 0%,black 12%);z-index:1}
+.hero-right-img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.85;transition:transform 8s ease;transform:scale(1.05)}
+.hero-right-ov{position:absolute;inset:0;background:linear-gradient(to right,var(--ink) 0%,transparent 35%),linear-gradient(to top,var(--ink) 0%,transparent 25%);z-index:2}
+.hero-right-card{position:absolute;bottom:3rem;left:-2rem;background:var(--white);padding:1.5rem 2rem;max-width:260px;box-shadow:var(--sh-lg);z-index:10}
+.hero-right-card strong{display:block;font-family:var(--font-heading);font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:.2rem}
+.hero-right-card span{font-family:'DM Mono',monospace;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--copper)}
+/* Scroll indicator */
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:.6rem}
+.scroll-hint span{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent);animation:scrollAnim 2s ease-in-out infinite}
+@keyframes scrollAnim{0%,100%{transform:scaleY(1);opacity:.5}50%{transform:scaleY(.4);opacity:1}}
+
+/* ── TICKER ── */
+.ticker{background:var(--copper);overflow:hidden;padding:.7rem 0;position:relative;z-index:1}
+.ticker-track{display:flex;gap:0;animation:tickScroll 35s linear infinite;white-space:nowrap}
+.ticker-item{display:inline-flex;align-items:center;gap:2rem;font-family:'DM Mono',monospace;font-size:.65rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.9);padding:0 2rem}
+.ticker-sep{width:4px;height:4px;background:rgba(255,255,255,.5);border-radius:50%;flex-shrink:0}
+@keyframes tickScroll{to{transform:translateX(-50%)}}
+
+/* ── ABOUT STRIP ── */
+.about-strip{background:var(--cream);padding:7rem 0}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:center}
+.about-img-col{position:relative}
+.about-img-frame{position:relative;overflow:hidden}
+.about-img-frame::before{content:'';position:absolute;top:-1.5rem;left:-1.5rem;right:1.5rem;bottom:1.5rem;border:1px solid rgba(0,75,172,.3);z-index:0;pointer-events:none}
+.about-main-img{position:relative;z-index:1;width:100%;height:520px;object-fit:cover;object-position:top center;display:block;transition:transform .7s var(--ease)}
+.about-img-frame:hover .about-main-img{transform:scale(1.03)}
+.about-badge{position:absolute;z-index:2;bottom:-2rem;right:-2rem;background:var(--ink);color:var(--white);padding:2rem 2.5rem;clip-path:polygon(0 0,100% 0,100% 80%,88% 100%,0 100%)}
+.about-badge-n{font-family:var(--font-heading);font-weight:700;font-size:3rem;font-weight:700;line-height:1}
+.about-badge-t{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:.4rem}
+.about-content h2{color:var(--ink);margin-bottom:1rem}
+.about-content p{margin-bottom:1.2rem}
+.about-tags{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.about-tag{display:flex;align-items:center;gap:.5rem;background:var(--white);border:1px solid var(--rule);padding:.45rem 1rem;font-family:'DM Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.about-tag::before{content:'';width:6px;height:6px;background:var(--copper);border-radius:50%;flex-shrink:0}
+
+/* ── COMPANIES ── */
+.companies-sec{background:var(--white);position:relative;overflow:hidden}
+.co-head{text-align:center;margin-bottom:4.5rem}
+.co-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--rule)}
+.co-card{background:var(--white);padding:3.5rem 2.5rem;position:relative;overflow:hidden;cursor:pointer;transition:background var(--t)}
+.co-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.co-card:hover{background:var(--cream)}
+.co-card:hover::before{transform:scaleX(1)}
+.co-num{font-family:'DM Mono',monospace;font-size:.65rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:1.75rem;display:block}
+.co-logo{height:52px;margin-bottom:1.75rem;display:flex;align-items:center}
+.co-logo img{height:100%;width:auto;object-fit:contain;filter:none}
+.co-logo-text{font-family:var(--font-heading);font-weight:700;font-size:1.5rem;font-weight:700;color:var(--ink);line-height:1.2}
+.co-logo-sub{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--copper);display:block;margin-top:.3rem}
+.co-card h3{font-family:var(--font-heading);font-weight:700;font-size:1.6rem;color:var(--ink);margin-bottom:.75rem}
+.co-card p{font-size:.88rem;line-height:1.78;margin-bottom:1.75rem}
+.co-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:2rem}
+.co-chip{font-family:'DM Mono',monospace;font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);background:var(--copper-lt);padding:.3rem .7rem;border-radius:2px}
+.co-link{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);border-bottom:1.5px solid var(--copper);padding-bottom:.2rem;transition:gap var(--t),color var(--t)}
+.co-link:hover{gap:.9rem;color:var(--copper)}
+.co-link svg{transition:transform var(--t)}
+.co-link:hover svg{transform:translateX(3px)}
+
+/* ── STATS ── */
+.stats-band{background:var(--ink);padding:5rem 0;position:relative;overflow:hidden}
+.stats-band .bldg-bg{position:absolute;inset:0;color:white}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.stat-box{padding:2.5rem;border-right:1px solid rgba(255,255,255,.08);text-align:center;transition:background var(--t)}
+.stat-box:last-child{border-right:none}
+.stat-box:hover{background:rgba(255,255,255,.04)}
+.stat-n{font-family:var(--font-heading);font-weight:700;font-size:4rem;font-weight:700;color:var(--white);line-height:1}
+.stat-l{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.6rem}
+.stat-box .stat-n .accent{color:var(--copper)}
+
+/* ── REACH ── */
+.reach-sec{background:var(--cream);overflow:hidden}
+.reach-grid{display:grid;grid-template-columns:2.2fr 1fr;gap:4rem;align-items:center}
+.reach-map{border:1px solid var(--rule);overflow:hidden;position:relative}
+.reach-map img{width:100%;height:auto;display:block;filter:saturate(.8)}
+.reach-content h2{color:var(--ink);margin-bottom:1rem}
+.reach-items{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem}
+.reach-item{display:flex;align-items:center;gap:1.25rem;padding:1.25rem 1.5rem;background:var(--white);border-left:3px solid transparent;transition:border-color var(--t),background var(--t)}
+.reach-item:hover{border-left-color:var(--copper);background:var(--white)}
+.reach-flag{font-family:'DM Mono',monospace;font-size:1.2rem;font-weight:700;color:var(--blue);width:45px;flex-shrink:0}
+.reach-name{font-family:var(--font-heading);font-weight:600;color:var(--ink)}
+.reach-detail{font-size:.8rem;color:var(--soft);margin-top:.15rem}
+
+/* ── SERVICES TABS ── */
+.svc-sec{background:var(--white);position:relative;overflow:hidden}
+.svc-sec .bldg-bg{bottom:0;left:0;right:0;pointer-events:none}
+.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-bottom:3.5rem}
+.svc-tabs{display:flex;border-bottom:1px solid var(--rule);margin-bottom:2rem;gap:0;position:relative;z-index:1}
+.svc-tab{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);padding:.85rem 1.75rem;background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all var(--t)}
+.svc-tab.on{color:var(--ink);border-bottom-color:var(--copper)}
+.svc-tab:hover:not(.on){color:var(--ink)}
+.svc-panel{display:none}
+.svc-panel.on{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5px;background:var(--rule)}
+.svc-tile{background:var(--white);padding:2rem 1.5rem;transition:background var(--t),transform var(--t);cursor:default}
+.svc-tile:hover{background:var(--ink)}
+.svc-tile:hover svg{fill:var(--white)}
+.svc-tile:hover h4,.svc-tile:hover p{color:rgba(255,255,255,.7)}
+.svc-tile:hover h4{color:var(--white)}
+.svc-ico{width:40px;height:40px;margin-bottom:1.2rem}
+.svc-ico svg{fill:var(--copper);transition:fill var(--t)}
+.svc-tile h4{font-family:var(--font-heading);font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:.4rem;transition:color var(--t)}
+.svc-tile p{font-size:.78rem;color:var(--soft);line-height:1.65;transition:color var(--t)}
+
+/* ── PROJECTS PREVIEW ── */
+.proj-prev{background:var(--cream)}
+.proj-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;gap:2rem;flex-wrap:wrap}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-card{background:var(--white);overflow:hidden;box-shadow:var(--sh-sm);transition:box-shadow var(--t),transform var(--t);cursor:pointer}
+.proj-card:hover{box-shadow:var(--sh-lg);transform:translateY(-5px)}
+.proj-card a{display:block;color:inherit}
+.proj-img{width:100%;height:220px;overflow:hidden;position:relative}
+.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);display:block}
+.proj-card:hover .proj-img img{transform:scale(1.07)}
+.proj-badge{position:absolute;top:.75rem;left:.75rem;background:var(--copper);color:var(--white);font-family:'DM Mono',monospace;font-size:.55rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .7rem}
+.proj-body{padding:1.5rem}
+.proj-body h4{font-family:var(--font-heading);font-weight:700;color:var(--ink);font-size:1.1rem;margin-bottom:.3rem}
+.proj-body p{font-size:.8rem;color:var(--soft);line-height:1.65}
+.proj-loc{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);margin-top:.6rem;display:flex;align-items:center;gap:.4rem}
+
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:8rem 2rem 5rem}
+  .about-grid,.reach-grid{grid-template-columns:1fr;gap:3rem}
+  .co-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .svc-head{grid-template-columns:1fr}
+  .svc-panel.on{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .stats-grid{grid-template-columns:1fr}
+  .svc-panel.on,.proj-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  .stat-box{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-img"></div>
+    <div class="hero-bg-grad"></div>
+    <div class="hero-lines"></div>
+  </div>
+  <div class="hero-left">
+    <div class="hero-tag reveal fb"><div class="hero-tag-dot"></div><span>Amravati, Maharashtra · Est. 2018</span></div>
+    <h1 class="reveal fb d1">Building<br/><em>Dreams,</em><br/>Crafting Futures.</h1>
+    <p class="hero-desc reveal fb d2">NVD Group is a multi-disciplinary collective specialising in premium construction, international project management, and global trade — delivering exceptional outcomes across India and the Middle East.</p>
+    <div class="hero-btns reveal fb d3">
+      <a href="builders.html" class="btn btn-white btn-pill">Explore Our Work <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="contact.html" class="btn btn-ghost-white btn-pill">Book Free Consult</a>
+    </div>
+    <div class="hero-stats reveal fb d4">
+      <div><div class="hs-n" data-count="3" data-suffix="+">0+</div><div class="hs-l">Companies</div></div>
+      <div><div class="hs-n" data-count="100" data-suffix="+">0+</div><div class="hs-l">Projects</div></div>
+      <div><div class="hs-n" data-count="10" data-suffix="+">0+</div><div class="hs-l">Years</div></div>
+      <div><div class="hs-n" data-count="3" data-suffix="">0</div><div class="hs-l">Countries</div></div>
+    </div>
+  </div>
+  <div class="hero-right reveal fr d2">
+    <div class="hero-right-img-wrap">
+      <img class="hero-right-img" src="img/founder_new.jpg" alt="Naved Akram — Founder, NVD Group"/>
+      <div class="hero-right-ov"></div>
+    </div>
+    <div class="hero-right-card reveal fb d4">
+      <strong>Naved Akram</strong>
+      <span>Founder & CEO · NVD Group</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">NVD Builders & Developers<span class="ticker-sep"></span></span>
+    <span class="ticker-item">NVD Project Management & Consultants<span class="ticker-sep"></span></span>
+    <span class="ticker-item">NVD Exim<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Premium Construction<span class="ticker-sep"></span></span>
+    <span class="ticker-item">International PMC<span class="ticker-sep"></span></span>
+    <span class="ticker-item">India · UAE · Saudi Arabia<span class="ticker-sep"></span></span>
+    <span class="ticker-item">3D · AR · VR Visualisation<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Amravati, Maharashtra<span class="ticker-sep"></span></span>
+    <span class="ticker-item">NVD Builders & Developers<span class="ticker-sep"></span></span>
+    <span class="ticker-item">NVD Project Management & Consultants<span class="ticker-sep"></span></span>
+    <span class="ticker-item">NVD Exim<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Premium Construction<span class="ticker-sep"></span></span>
+    <span class="ticker-item">International PMC<span class="ticker-sep"></span></span>
+    <span class="ticker-item">India · UAE · Saudi Arabia<span class="ticker-sep"></span></span>
+    <span class="ticker-item">3D · AR · VR Visualisation<span class="ticker-sep"></span></span>
+    <span class="ticker-item">Amravati, Maharashtra<span class="ticker-sep"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-strip">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-col reveal fl">
+        <div class="about-img-frame">
+          <img class="about-main-img" src="img/founder.jpg" alt="Naved Akram"/>
+        </div>
+        <div class="about-badge"><div class="about-badge-n" data-count="10" data-suffix="+">0+</div><div class="about-badge-t">Years of Expertise</div></div>
+      </div>
+      <div>
+        <span class="eyebrow reveal fb">The Think Tank</span>
+        <h2 class="reveal fb d1">A Vision Born From<br/><em>Courage & Craft</em></h2>
+        <div class="rule reveal fb d1"></div>
+        <p class="reveal fb d2">Founded by <strong>Naved Akram</strong> — a Civil Engineer with an MBA in Construction Management — NVD Group was born from a deliberate step away from corporate certainty and toward entrepreneurial purpose.</p>
+        <p class="reveal fb d2">After leaving his mark on landmark projects across India, Saudi Arabia, and Dubai, Naved returned home to Amravati and built three specialized companies united by one commitment: exceptional quality, always.</p>
+        <div class="about-tags reveal fb d3">
+          <span class="about-tag">India</span>
+          <span class="about-tag">UAE</span>
+          <span class="about-tag">Saudi Arabia</span>
+        </div>
+        <div style="margin-top:2.5rem" class="reveal fb d3"><a href="contact.html" class="btn btn-dark btn-pill">Book Free Consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPANIES -->
+<section class="companies-sec section">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="co-head">
+      <span class="eyebrow eyebrow-dark reveal fb" style="justify-content:center">Our Three Companies</span>
+      <h2 class="reveal fb d1">Specialized. Unified. <em>Complete.</em></h2>
+      <p class="reveal fb d2" style="max-width:480px;margin:.75rem auto 0">Three distinct companies, each an expert in their domain — working in concert to deliver any project from concept to completion.</p>
+    </div>
+    <div class="co-grid">
+      <div class="co-card spotlight-card reveal fs" onclick="location.href='builders.html'">
+        <span class="co-num">01 / 03</span>
+        <div class="co-logo"><img src="img/bd_logo_transparent.png" alt="NVD Builders & Developers" style="height:85px;width:auto"/></div>
+        <h3>NVD Builders &amp;<br/>Developers</h3>
+        <p>Premium residential and industrial construction — from bespoke bungalows to large-scale factories, with immersive 3D, AR & VR visualisation and turnkey NRI solutions.</p>
+        <div class="co-chips"><span class="co-chip">Residential</span><span class="co-chip">Industrial</span><span class="co-chip">3D/VR</span><span class="co-chip">Turnkey</span></div>
+        <a href="builders.html" class="co-link">Explore Division <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="co-card spotlight-card reveal fs d2" onclick="location.href='pmc.html'">
+        <span class="co-num">02 / 03</span>
+        <div class="co-logo"><img src="img/fnc_logo_transparent.png" alt="NVD PMC" style="height:85px;width:auto"/></div>
+        <h3>NVD Project<br/>Management</h3>
+        <p>International-grade project management and consultancy. Proven track record on projects worth 700M+ SAR across Saudi Arabia, UAE and India.</p>
+        <div class="co-chips"><span class="co-chip">PMC</span><span class="co-chip">International</span><span class="co-chip">Cost Control</span><span class="co-chip">Feasibility</span></div>
+        <a href="pmc.html" class="co-link">Explore Division <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <div class="co-card spotlight-card reveal fs d3" onclick="location.href='exim.html'">
+        <span class="co-num">03 / 03</span>
+        <div class="co-logo">
+          <div style="width:85px;height:85px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:2rem;margin-right:1rem">E</div>
+          <div class="co-logo-text">NVD Exim<span class="co-logo-sub">Import · Export</span></div>
+        </div>
+        <h3>NVD Exim</h3>
+        <p>Global trade solutions connecting Indian businesses with markets across the Middle East and beyond. Currently expanding — enquiries welcome.</p>
+        <div class="co-chips"><span class="co-chip">Import</span><span class="co-chip">Export</span><span class="co-chip">Gulf Markets</span><span class="co-chip">Trade Consulting</span></div>
+        <a href="exim.html" class="co-link">Explore Division <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-band">
+  <div class="bldg-bg"></div>
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-box reveal fb"><div class="stat-n" data-count="100" data-suffix="+">0+</div><div class="stat-l">Projects Delivered</div></div>
+      <div class="stat-box reveal fb d1"><div class="stat-n"><span class="accent" data-count="700" data-suffix="M+">0</span></div><div class="stat-l">SAR International Value</div></div>
+      <div class="stat-box reveal fb d2"><div class="stat-n" data-count="3" data-suffix="">0</div><div class="stat-l">Countries Active</div></div>
+      <div class="stat-box reveal fb d3"><div class="stat-n" data-count="10" data-suffix="+">0+</div><div class="stat-l">Years of Expertise</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL REACH -->
+<section class="reach-sec section">
+  <div class="wrap">
+    <div class="reach-grid">
+      <div class="reach-map reveal fl">
+        <img src="img/world_map.jpg" alt="NVD Group — India, UAE, Saudi Arabia" loading="lazy"/>
+      </div>
+      <div>
+        <span class="eyebrow reveal fb">Global Presence</span>
+        <h2 class="reveal fb d1" style="color:var(--ink)">Operating Across<br/><em>Three Nations</em></h2>
+        <div class="rule reveal fb d1"></div>
+        <p class="reveal fb d2">From construction sites in Amravati to luxury developments in Riyadh — NVD Group's experience spans continents, cultures, and project scales.</p>
+        <div class="reach-items">
+          <div class="reach-item reveal fb d2"><span class="reach-flag">IN</span><div><div class="reach-name">India</div><div class="reach-detail">Residential, commercial & industrial construction across Maharashtra</div></div></div>
+          <div class="reach-item reveal fb d3"><span class="reach-flag">UAE</span><div><div class="reach-name">UAE — Dubai</div><div class="reach-detail">Project management consultancy for luxury developments</div></div></div>
+          <div class="reach-item reveal fb d4"><span class="reach-flag">SA</span><div><div class="reach-name">Saudi Arabia — Riyadh</div><div class="reach-detail">PMC for Aleisa Residency (210M SAR) & Inspire Boulevard (495M SAR)</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc-sec section">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <div class="svc-head">
+      <div><span class="eyebrow reveal fb">What We Do</span><h2 class="reveal fb d1">One Group,<br/><em>Every Project Need</em></h2></div>
+      <div style="display:flex;flex-direction:column;justify-content:flex-end"><p class="reveal fb d2">From feasibility to final handover — our three companies cover the complete project lifecycle with precision and care.</p></div>
+    </div>
+    <div class="svc-tabs reveal fb">
+      <button class="svc-tab on" data-p="construction">Construction</button>
+      <button class="svc-tab" data-p="pmc">PMC</button>
+      <button class="svc-tab" data-p="exim">Exim</button>
+    </div>
+    <div class="svc-panel on" id="sp-construction">
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h4>Houses & Bungalows</h4><p>Bespoke 2–5 BHK homes with premium finishes.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg></div><h4>High Rise Buildings</h4><p>Multi-storey residential & mixed-use structures.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="12" rx="2"/><path d="M6 2h4v4H6zM14 2h4v4h-4z"/></svg></div><h4>Factories & Industrial</h4><p>Purpose-built facilities engineered for efficiency.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><h4>3D · AR · VR</h4><p>Immersive visualisation before a brick is laid.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Turnkey Solutions</h4><p>Complete design-to-handover. Zero hassle.</p></div>
+    </div>
+    <div class="svc-panel" id="sp-pmc">
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h4>Project Management</h4><p>End-to-end PM from concept to closeout.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Planning & Scheduling</h4><p>Critical path and timeline optimisation.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Cost Control</h4><p>Rigorous budgeting and variance management.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><h4>Feasibility Studies</h4><p>Technical & financial analysis before you commit.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><h4>Value Engineering</h4><p>Maximise value without compromising quality.</p></div>
+    </div>
+    <div class="svc-panel" id="sp-exim">
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h4>Import & Export</h4><p>India–Gulf cross-border trade facilitation.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Business Matchmaking</h4><p>Connecting Indian suppliers with Gulf buyers.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Logistics Support</h4><p>End-to-end supply chain coordination.</p></div>
+      <div class="svc-tile"><div class="svc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h4>Trade Documentation</h4><p>Compliance, licensing and customs advisory.</p></div>
+      <div class="svc-tile" style="background:var(--cream-dark);display:flex;align-items:center;justify-content:center;text-align:center"><p style="color:var(--soft);font-size:.78rem">More services<br/>coming soon</p></div>
+    </div>
+    <div style="margin-top:2.5rem;display:flex;justify-content:center" class="reveal fb">
+      <a href="contact.html" class="btn btn-dark btn-pill">Book Free Consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="proj-prev section">
+  <div class="wrap">
+    <div class="proj-head">
+      <div><span class="eyebrow reveal fb">Portfolio</span><h2 class="reveal fb d1" style="color:var(--ink)">Selected Projects</h2></div>
+      <a href="builders.html#projects" class="btn btn-outline reveal fb">View All Projects</a>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card reveal fs"><a href="builders.html#projects"><div class="proj-img"><span class="proj-badge">3D Render</span><img src="img/panoramic_1.jpg" alt="Bungalow Latur" loading="lazy"/></div><div class="proj-body"><h4>Luxury Bungalow</h4><p>Photorealistic 3D render and full construction, 4 BHK premium villa.</p><div class="proj-loc">📍 Latur, Maharashtra</div></div></a></div>
+      <div class="proj-card reveal fs d1"><a href="builders.html#projects"><div class="proj-img"><span class="proj-badge">Completed</span><img src="img/completed_2.jpg" alt="Completed Residence" loading="lazy"/></div><div class="proj-body"><h4>Modern Residence</h4><p>Multi-storey residential building with contemporary facade treatment.</p><div class="proj-loc">📍 Amravati, Maharashtra</div></div></a></div>
+      <div class="proj-card reveal fs d2"><a href="builders.html#projects"><div class="proj-img"><span class="proj-badge">Interior</span><img src="img/interior_3.jpg" alt="Interior" loading="lazy"/></div><div class="proj-body"><h4>Full Home Interior</h4><p>Complete 3 BHK interior fit-out with custom carpentry and lighting.</p><div class="proj-loc">📍 Amravati, Maharashtra</div></div></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div><h2 class="reveal fb">Ready to Build<br/><em>Your Vision?</em></h2><p class="reveal fb d1">Let's discuss your project and bring your ideas to life.</p></div>
+    <div class="cta-btns reveal fb d2">
+      <a href="contact.html" class="btn btn-blue btn-pill">Book Free Consult <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="mailto:freelance.nvd@gmail.com" class="btn btn-ghost-white btn-pill">Email Us</a>
+    </div>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+initPage('home');
+document.querySelectorAll('.svc-tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.svc-tab').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.svc-panel').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    document.getElementById('sp-'+t.dataset.p).classList.add('on');
+  });
+});
+</script>
+</body></html>

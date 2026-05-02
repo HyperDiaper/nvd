@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NVD Project Management & Consultants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.pmc-hero{min-height:100vh;background:var(--ink);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
+.pmc-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;animation:gridDrift 28s linear infinite}
+@keyframes gridDrift{to{background-position:60px 60px}}
+.pmc-glow{position:absolute;bottom:-30%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(0,75,172,.1) 0%,transparent 65%)}
+.pmc-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:5rem 0}
+.pmc-logo{height:64px;margin-bottom:2rem}
+.pmc-logo img{height:100%;width:auto;filter:brightness(0) invert(1)}
+.pmc-hero h1{color:var(--white);margin-bottom:1.25rem}
+.pmc-hero h1 em{font-style:italic;color:var(--copper)}
+.pmc-desc{font-size:1rem;color:rgba(255,255,255,.55);max-width:460px;line-height:1.85;margin-bottom:2.5rem}
+.pmc-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.pmc-kpis{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:2rem 1.5rem;text-align:center;transition:all var(--t);position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.22,.68,0,1.2)}
+.kpi:hover{background:rgba(0,75,172,.08);border-color:rgba(0,75,172,.2);transform:translateY(-3px)}
+.kpi:hover::before{transform:scaleX(1)}
+.kpi-n{font-family:var(--font-heading);font-size:3rem;font-weight:700;color:var(--white);line-height:1}
+.kpi-l{font-family:'DM Mono',monospace;font-size:.58rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:.5rem}
+
+/* SERVICES */
+.pmc-svc{background:var(--cream);position:relative;overflow:hidden}
+.pmc-svc .bldg-bg{bottom:0;left:0;right:0}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--rule);margin-top:2.5rem}
+.st{background:var(--white);padding:2.25rem 1.75rem;transition:background var(--t);position:relative;overflow:hidden}
+.st::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--copper);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.22,.68,0,1.2)}
+.st:hover{background:var(--cream-dark)}
+.st:hover::before{transform:scaleY(1)}
+.st-ico{width:40px;height:40px;margin-bottom:1.1rem}
+.st-ico svg{fill:var(--copper)}
+.st h4{font-family:var(--font-heading);color:var(--ink);font-size:1.1rem;margin-bottom:.4rem}
+.st p{font-size:.8rem;color:var(--mid)}
+
+/* INTL PROJECTS */
+.intl-sec{background:var(--ink);padding:7rem 0;position:relative;overflow:hidden}
+.intl-sec .bldg-bg{bottom:0;left:0;right:0}
+.intl-head{text-align:center;margin-bottom:3.5rem}
+.intl-head h2{color:var(--white)}
+.intl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;position:relative;z-index:2}
+.ic{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2.5rem;transition:all var(--t);position:relative;overflow:hidden}
+.ic::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.22,.68,0,1.2)}
+.ic:hover{background:rgba(0,75,172,.08);border-color:rgba(0,75,172,.2);transform:translateY(-5px)}
+.ic:hover::after{transform:scaleX(1)}
+.ic-flag{font-size:2rem;margin-bottom:.75rem}
+.ic h4{font-family:var(--font-heading);color:var(--white);font-size:1.3rem;margin-bottom:.5rem}
+.ic p{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.75}
+.ic-val{font-family:var(--font-heading);font-size:2rem;font-weight:700;color:var(--copper);margin-top:1rem}
+.ic-status{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.25rem}
+
+/* PROCESS */
+.pmc-proc{background:var(--white)}
+.proc-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.timeline{display:flex;flex-direction:column;gap:0;position:relative;margin-top:2rem}
+.timeline::before{content:'';position:absolute;left:23px;top:0;bottom:0;width:1px;background:rgba(0,75,172,.2)}
+.tl{display:flex;gap:1.75rem;padding:1.25rem 0;position:relative}
+.tl-dot{flex-shrink:0;width:46px;height:46px;border-radius:50%;background:var(--white);border:1.5px solid rgba(0,75,172,.35);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.05rem;font-weight:700;color:var(--copper);transition:all var(--t);position:relative;z-index:1}
+.tl:hover .tl-dot{background:var(--copper);border-color:var(--copper);color:var(--white)}
+.tl-body{padding-top:.4rem}
+.tl-body h4{font-family:var(--font-heading);color:var(--ink);font-size:1.1rem;margin-bottom:.25rem}
+.tl-body p{font-size:.84rem}
+
+/* WHY */
+.why-sec{background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.wc{background:var(--white);padding:2rem;border-left:2px solid var(--copper);transition:all var(--t)}
+.wc:hover{background:var(--copper-lt);transform:translateX(4px)}
+.wc h4{font-family:var(--font-heading);color:var(--ink);font-size:1.1rem;margin-bottom:.4rem}
+.wc p{font-size:.84rem}
+
+/* MAP */
+.map-sec{background:var(--white);padding:5rem 0;text-align:center}
+.map-sec h2{color:var(--ink);margin-bottom:1rem}
+.map-img{max-width:900px;margin:2.5rem auto 0;border:1px solid var(--rule);overflow:hidden}
+.map-img img{width:100%;display:block;filter:saturate(.85)}
+
+/* EXT LINK */
+.ext-sec{background:var(--ink);padding:4.5rem 0;text-align:center;position:relative;overflow:hidden}
+.ext-sec .bldg-bg{bottom:0;left:0;right:0}
+.ext-box{display:inline-flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);padding:1.25rem 2.5rem;margin-top:1.5rem;transition:all var(--t);cursor:pointer;position:relative;z-index:1}
+.ext-box:hover{background:rgba(0,75,172,.12);border-color:var(--copper)}
+.ext-url{font-family:var(--font-heading);font-size:1.2rem;font-weight:600;color:var(--white)}
+.ext-coming{font-family:'DM Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);border:1px solid var(--copper);padding:.28rem .65rem;display:inline-block;margin-top:.75rem}
+
+@media(max-width:960px){
+  .pmc-hero-inner{grid-template-columns:1fr}.pmc-kpis{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:1fr 1fr}.intl-grid{grid-template-columns:1fr}
+  .proc-layout{grid-template-columns:1fr;gap:3rem}.why-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){.svc-grid,.pmc-kpis{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<section class="pmc-hero">
+  <div class="pmc-lines"></div>
+  <div class="pmc-glow"></div>
+  <div class="bldg-bg" style="bottom:0;left:0;right:0;position:absolute"></div>
+  <div class="wrap">
+    <div class="pmc-hero-inner">
+      <div>
+        <div class="pmc-logo reveal fb"><img src="img/fnc_logo_transparent.png" alt="NVD PMC" style="height:100%;mix-blend-mode:screen"/></div>
+        <h1 class="reveal fb d1">International PMC<br/>That <em>Delivers.</em></h1>
+        <p class="pmc-desc reveal fb d2">From Amravati to Riyadh — NVD PMC has managed projects worth over <strong style="color:var(--white)">700M+ SAR</strong> across India, UAE and Saudi Arabia. World-class project management for any scale.</p>
+        <div class="pmc-btns reveal fb d3">
+          <a href="contact.html" class="btn btn-blue btn-pill">Request Consultation</a>
+          <a href="#international" class="btn btn-ghost-white btn-pill">View International Work</a>
+        </div>
+      </div>
+      <div class="pmc-kpis reveal fr d2">
+        <div class="kpi"><div class="kpi-n" data-count="700" data-suffix="M+">0</div><div class="kpi-l">SAR Project Value</div></div>
+        <div class="kpi"><div class="kpi-n" data-count="3" data-suffix="">0</div><div class="kpi-l">Countries Active</div></div>
+        <div class="kpi"><div class="kpi-n" data-count="10" data-suffix="+">0+</div><div class="kpi-l">Years Experience</div></div>
+        <div class="kpi"><div class="kpi-n">G+16</div><div class="kpi-l">Marriott Hotel KSA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pmc-svc section">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <span class="eyebrow reveal fb">Our Expertise</span>
+    <h2 class="reveal fb d1">Project Management Services</h2>
+    <div class="rule reveal fb d1"></div>
+    <div class="svc-grid">
+      <div class="st reveal fs"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h4>Project Management</h4><p>End-to-end PM from concept to closeout — scope, time, cost, quality.</p></div>
+      <div class="st reveal fs d1"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h4>Planning & Scheduling</h4><p>Critical path analysis, milestones and timeline optimisation.</p></div>
+      <div class="st reveal fs d2"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Cost Control</h4><p>Rigorous budgeting and variance analysis to protect every investment.</p></div>
+      <div class="st reveal fs d3"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Financial Advisory</h4><p>Strategic financial counsel aligned with long-term investment objectives.</p></div>
+      <div class="st reveal fs"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div><h4>Project Feasibility</h4><p>Technical, financial and operational feasibility studies.</p></div>
+      <div class="st reveal fs d1"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Value Engineering</h4><p>Maximise project value without compromising quality.</p></div>
+      <div class="st reveal fs d2"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><h4>Business Process Re-engineering</h4><p>Restructure operations to eliminate waste and drive efficiency.</p></div>
+      <div class="st reveal fs d3"><div class="st-ico"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><path d="M9 19V6l12-3v13"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><h4>Cost Analysis & Estimation</h4><p>Detailed BOQ preparation and accurate cost estimation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="intl-sec" id="international">
+  <div class="bldg-bg"></div>
+  <div class="wrap">
+    <div class="intl-head">
+      <span class="eyebrow eyebrow-light reveal fb" style="justify-content:center">International Track Record</span>
+      <h2 class="reveal fb d1" style="color:var(--white)">Success Stories</h2>
+    </div>
+    <div class="intl-grid">
+      <div class="ic reveal fs"><div class="ic-flag">🇸🇦</div><h4>Aleisa Residency</h4><p>Ultra-luxury residential development in Riyadh with world-class specs and premium finishes throughout.</p><div class="ic-val">210M SAR</div><div class="ic-status">75% Complete · Riyadh, KSA</div></div>
+      <div class="ic reveal fs d1"><div class="ic-flag">🇸🇦</div><h4>Inspire Boulevard — Marriott</h4><p>Mixed-use development with G+16 ultra-luxury apartments and a Marriott Hotel tower in central Riyadh.</p><div class="ic-val">495M SAR</div><div class="ic-status">3 Year Completion · Riyadh, KSA</div></div>
+      <div class="ic reveal fs d2"><div class="ic-flag">🇮🇳</div><h4>India Operations</h4><p>Residential, commercial and industrial PMC services across Maharashtra — homes to large-scale factories.</p><div class="ic-val">100+</div><div class="ic-status">Projects Delivered · Maharashtra</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pmc-proc section">
+  <div class="wrap">
+    <div class="proc-layout">
+      <div>
+        <span class="eyebrow reveal fb">Our Methodology</span>
+        <h2 class="reveal fb d1">How We Deliver</h2>
+        <div class="rule reveal fb d1"></div>
+        <p class="reveal fb d2">A structured, proven approach that eliminates risk, controls cost, and delivers results — every time, on every project regardless of scale or geography.</p>
+        <div style="margin-top:2.5rem" class="reveal fb d3"><a href="contact.html" class="btn btn-dark btn-pill">Start a Project</a></div>
+      </div>
+      <div class="timeline reveal fr d2">
+        <div class="tl"><div class="tl-dot">01</div><div class="tl-body"><h4>Feasibility & Initiation</h4><p>Technical, financial and operational assessment to confirm project viability.</p></div></div>
+        <div class="tl"><div class="tl-dot">02</div><div class="tl-body"><h4>Planning & Design</h4><p>Detailed project plans, schedules, budgets and procurement strategies.</p></div></div>
+        <div class="tl"><div class="tl-dot">03</div><div class="tl-body"><h4>Execution & Monitoring</h4><p>On-site supervision, quality control, cost tracking and stakeholder reporting.</p></div></div>
+        <div class="tl"><div class="tl-dot">04</div><div class="tl-body"><h4>Closeout & Handover</h4><p>Final inspections, documentation, lessons learned and client sign-off.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-sec section">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start">
+      <div>
+        <span class="eyebrow reveal fb">Why NVD PMC</span>
+        <h2 class="reveal fb d1">Problem Solvers.<br/><em>Solution Providers.</em></h2>
+        <div class="rule reveal fb d1"></div>
+        <p class="reveal fb d2">NVD PMC brings proven experience across small, medium and mega projects in India, UAE and Saudi Arabia — with the complete lifecycle solution from conceptualisation to final closure.</p>
+        <p class="reveal fb d3">What we do, we are exceptionally good at — delivering the highest quality results and earning lasting client trust.</p>
+      </div>
+      <div class="why-grid reveal fr d2">
+        <div class="wc"><h4>International Experience</h4><p>700M+ SAR in managed project value across the Middle East.</p></div>
+        <div class="wc"><h4>End-to-End Solutions</h4><p>Full lifecycle from feasibility through final handover.</p></div>
+        <div class="wc"><h4>Cost Certainty</h4><p>Rigorous methodology protects budgets from overruns.</p></div>
+        <div class="wc"><h4>Client-First Culture</h4><p>Collaboration at the heart — your success is our success.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-sec">
+  <div class="wrap">
+    <span class="eyebrow eyebrow-dark reveal fb" style="justify-content:center">Global Presence</span>
+    <h2 class="reveal fb d1">Operating Across <em>Three Nations</em></h2>
+    <p class="reveal fb d2" style="max-width:500px;margin:.75rem auto 0">From construction sites in Amravati to luxury developments in Riyadh.</p>
+    <div class="map-img reveal fs d2"><img src="img/world_map.jpg" alt="NVD Group global presence" loading="lazy"/></div>
+  </div>
+</section>
+
+<section class="ext-sec">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <span class="eyebrow eyebrow-light reveal fb" style="justify-content:center">Dedicated Website</span>
+    <h2 class="reveal fb d1" style="color:var(--white)">NVD PMC Website<br/><em style="color:var(--copper)">Coming Soon</em></h2>
+    <p class="reveal fb d2" style="color:rgba(255,255,255,.5);max-width:460px;margin:.75rem auto 0">A dedicated website for NVD Project Management & Consultants is in development with full project portfolios and client case studies.</p>
+    <div class="reveal fb d3">
+      <a id="pmcSiteLink" href="#" class="ext-box" onclick="return handleExt(event,'pmc')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span class="ext-url" id="pmcUrl">URL Coming Soon</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <div><span class="ext-coming">Website launching soon — check back</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div><h2 class="reveal fb" style="color:var(--white)">Have a Project to Manage?</h2><p class="reveal fb d1">Free consultation — India or International.</p></div>
+    <div class="cta-btns reveal fb d2"><a href="contact.html" class="btn btn-blue btn-pill">Book Free Consult</a><a href="tel:+919730266903" class="btn btn-ghost-white btn-pill">+91 97302 66903</a></div>
+  </div>
+</div>
+<script src="shared.js"></script>
+<script>
+initPage('pmc');
+function handleExt(e,type){
+  const url=type==='pmc'?SITE.pmc_site:SITE.exim_site;
+  if(url&&url!=='#'){window.open(url,'_blank');return true}
+  return false;
+}
+if(SITE.pmc_site&&SITE.pmc_site!=='#'){
+  const a=document.getElementById('pmcSiteLink');
+  a.href=SITE.pmc_site;a.onclick=null;
+  document.getElementById('pmcUrl').textContent=SITE.pmc_site.replace(/https?:\/\//,'');
+}
+</script>
+</body></html>

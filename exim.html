@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NVD Exim — Global Trade Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.exim-hero{min-height:90vh;background:var(--ink);display:flex;align-items:center;position:relative;overflow:hidden;padding-top:72px}
+.exim-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;animation:gridDrift 28s linear infinite}
+@keyframes gridDrift{to{background-position:60px 60px}}
+.exim-ring{position:absolute;border-radius:50%;border:1px solid rgba(0,75,172,.15);animation:ringPulse 5s ease-in-out infinite}
+.er1{width:300px;height:300px;top:5%;right:5%;animation-delay:0s}
+.er2{width:550px;height:550px;top:calc(5% - 125px);right:calc(5% - 125px);animation-delay:.6s}
+.er3{width:800px;height:800px;top:calc(5% - 250px);right:calc(5% - 250px);animation-delay:1.2s}
+@keyframes ringPulse{0%,100%{opacity:.35}50%{opacity:.7}}
+.exim-hero-inner{position:relative;z-index:2;max-width:800px;padding:4rem 0}
+.exim-status{display:inline-flex;align-items:center;gap:.6rem;background:rgba(0,75,172,.12);border:1px solid rgba(0,75,172,.3);padding:.4rem 1rem;border-radius:100px;margin-bottom:2rem}
+.exim-dot{width:6px;height:6px;background:var(--copper);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.exim-status span{font-family:'DM Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--copper)}
+.exim-name{font-family:var(--font-heading);font-size:clamp(2.5rem,6vw,5rem);font-weight:700;color:var(--white);line-height:1;margin-bottom:.5rem}
+.exim-sub{font-family:'DM Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--copper);display:block;margin-bottom:2.5rem}
+.exim-hero h1{color:var(--white);margin-bottom:1.25rem}
+.exim-hero h1 em{font-style:italic;color:var(--copper)}
+.exim-desc{font-size:1rem;color:rgba(255,255,255,.55);max-width:560px;line-height:1.85;margin-bottom:2.5rem}
+.exim-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ABOUT */
+.exim-about{background:var(--cream)}
+.ea-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.ea-tiles{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ea-tile{padding:2.25rem 1.75rem;text-align:center;clip-path:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%);transition:transform var(--t)}
+.ea-tile:hover{transform:translateY(-4px)}
+.ea-tile.dark{background:var(--ink);color:var(--white)}
+.ea-tile.copper{background:var(--copper);color:var(--white)}
+.ea-n{font-family:var(--font-heading);font-size:2.5rem;font-weight:700;line-height:1;color:inherit}
+.ea-l{font-family:'DM Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;opacity:.55;margin-top:.4rem}
+
+/* SERVICES */
+.exim-svc{background:var(--white);position:relative;overflow:hidden}
+.esvc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.esc{background:var(--cream);padding:2.5rem;border:1px solid var(--rule);position:relative;overflow:hidden;transition:all var(--t)}
+.esc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--copper);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.22,.68,0,1.2)}
+.esc:hover{transform:translateY(-4px);box-shadow:var(--sh-md);background:var(--white)}
+.esc:hover::before{transform:scaleX(1)}
+.esc-ico{width:44px;height:44px;margin-bottom:1.25rem}
+.esc-ico svg{fill:var(--copper)}
+.esc h4{font-family:var(--font-heading);color:var(--ink);font-size:1.25rem;margin-bottom:.6rem}
+.esc p{font-size:.88rem;line-height:1.8}
+
+/* REGIONS */
+.regions{background:var(--ink);padding:6rem 0;position:relative;overflow:hidden}
+.regions .bldg-bg{bottom:0;left:0;right:0}
+.reg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;position:relative;z-index:2;margin-top:3rem}
+.rc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:2.5rem;text-align:center;transition:all var(--t)}
+.rc:hover{background:rgba(0,75,172,.1);border-color:rgba(0,75,172,.25);transform:translateY(-4px)}
+.rc-flag{font-family:'DM Mono',monospace;font-size:2.2rem;font-weight:700;color:var(--blue);margin-bottom:1rem;display:block}
+.rc-name{font-family:var(--font-heading);font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:.5rem}
+.rc-desc{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.75}
+
+/* ROADMAP */
+.roadmap{background:var(--cream);padding:6rem 0}
+.rm-inner{max-width:700px;margin:0 auto;text-align:center}
+.rm-steps{display:flex;flex-direction:column;gap:1rem;text-align:left;margin:2.5rem 0}
+.rm-step{display:flex;align-items:flex-start;gap:1.25rem;padding:1.25rem;background:var(--white);border-left:2px solid var(--copper)}
+.rm-n{flex-shrink:0;width:36px;height:36px;background:var(--copper);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1rem;font-weight:700;border-radius:50%}
+.rm-step h5{font-family:var(--font-heading);color:var(--ink);font-size:1.05rem;margin-bottom:.2rem}
+.rm-step p{font-size:.83rem;margin:0}
+.notify-wrap{margin-top:2rem}
+.notify-form{display:flex;gap:.75rem;max-width:440px;margin:.75rem auto 0;flex-wrap:wrap;justify-content:center}
+.ni{flex:1;min-width:200px;padding:.85rem 1rem;font-family:'DM Sans',sans-serif;font-size:.88rem;border:1px solid var(--rule);background:var(--white);color:var(--ink);outline:none;transition:border-color var(--t)}
+.ni:focus{border-color:var(--copper)}
+.ni.err{border-color:#c0392b}
+.nb{background:var(--copper);color:var(--white);padding:.85rem 1.75rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background var(--t);white-space:nowrap}
+.nb:hover{background:#a96b2a}
+.n-ok{display:none;font-family:'DM Sans',sans-serif;font-size:.85rem;color:var(--copper);font-weight:600;margin-top:.75rem}
+.n-ok.show{display:block}
+
+/* EXT */
+.ext-sec{background:var(--ink);padding:4rem 0;text-align:center;position:relative;overflow:hidden}
+.ext-box{display:inline-flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);padding:1.25rem 2.5rem;margin-top:1.5rem;transition:all var(--t)}
+.ext-box:hover{background:rgba(0,75,172,.1);border-color:var(--copper)}
+.ext-url{font-family:var(--font-heading);font-size:1.2rem;font-weight:600;color:var(--white)}
+.ext-coming{font-family:'DM Mono',monospace;font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);border:1px solid var(--copper);padding:.28rem .65rem;display:inline-block;margin-top:.75rem}
+
+@media(max-width:960px){.ea-grid{grid-template-columns:1fr;gap:3rem}.esvc-grid{grid-template-columns:1fr}.reg-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.ea-tiles{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<section class="exim-hero">
+  <div class="exim-lines"></div>
+  <div class="er1 exim-ring"></div><div class="er2 exim-ring"></div><div class="er3 exim-ring"></div>
+  <div class="bldg-bg" style="position:absolute;bottom:0;left:0;right:0"></div>
+  <div class="wrap">
+    <div class="exim-hero-inner">
+      <div class="exim-status reveal fb"><div class="exim-dot"></div><span>Currently Expanding Operations</span></div>
+      <div class="exim-name reveal fb d1">NVD Exim</div>
+      <span class="exim-sub reveal fb d1">Import · Export · Global Trade</span>
+      <h1 class="reveal fb d2">Connecting <em>India</em><br/>to the World.</h1>
+      <p class="exim-desc reveal fb d3">NVD Exim is building bridges between Indian businesses and global markets — focused on the Gulf region, facilitating trade, matchmaking suppliers with buyers, and creating international growth opportunities.</p>
+      <div class="exim-btns reveal fb d4">
+        <a href="contact.html" class="btn btn-blue btn-pill">Register Interest</a>
+        <a href="#services" class="btn btn-ghost-white btn-pill">Our Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exim-about section">
+  <div class="wrap">
+    <div class="ea-grid">
+      <div>
+        <span class="eyebrow reveal fb">About NVD Exim</span>
+        <h2 class="reveal fb d1">Global Trade,<br/><em>Local Expertise.</em></h2>
+        <div class="rule reveal fb d1"></div>
+        <p class="reveal fb d2">NVD Exim is the newest member of the NVD Group family — a trade company that leverages the group's deep connections across India and the Middle East to facilitate import-export transactions and cross-border trade solutions.</p>
+        <p class="reveal fb d2">Built on 10+ years of international experience across India, UAE and Saudi Arabia, NVD Exim is positioned to become a key facilitator for businesses looking to expand globally.</p>
+        <p class="reveal fb d3"><strong>Currently in active development</strong> — registration open for early partners.</p>
+        <div style="margin-top:2rem" class="reveal fb d3"><a href="contact.html" class="btn btn-dark btn-pill">Register Early Interest</a></div>
+      </div>
+      <div class="ea-tiles reveal fr d2">
+        <div class="ea-tile dark"><div class="ea-n">3+</div><div class="ea-l">Countries Active</div></div>
+        <div class="ea-tile copper"><div class="ea-n">10+</div><div class="ea-l">Years Group Experience</div></div>
+        <div class="ea-tile copper"><div class="ea-n">🌍</div><div class="ea-l">India & Gulf Markets</div></div>
+        <div class="ea-tile dark"><div class="ea-n">∞</div><div class="ea-l">Possibilities Ahead</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exim-svc section" id="services">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <span class="eyebrow reveal fb">What We Offer</span>
+    <h2 class="reveal fb d1">Trade Services</h2>
+    <div class="rule reveal fb d1"></div>
+    <div class="esvc-grid">
+      <div class="esc reveal fs"><div class="esc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h4>Import & Export</h4><p>Cross-border trade facilitation between India and the Gulf — handling documentation, compliance, and coordination to make transactions seamless for both buyers and sellers.</p></div>
+      <div class="esc reveal fs d1"><div class="esc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Business Matchmaking</h4><p>Connecting Indian suppliers and manufacturers with vetted buyers across UAE and Saudi Arabia — leveraging NVD Group's established Gulf network.</p></div>
+      <div class="esc reveal fs d2"><div class="esc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Logistics & Supply Chain</h4><p>End-to-end logistics coordination, freight forwarding support, and supply chain management — ensuring goods move efficiently and cost-effectively across borders.</p></div>
+      <div class="esc reveal fs d3"><div class="esc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h4>Trade Documentation</h4><p>Advisory on international trade documentation, customs compliance, import/export regulations, and licensing requirements across Indian and Gulf jurisdictions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="regions">
+  <div class="bldg-bg"></div>
+  <div class="wrap">
+    <span class="eyebrow eyebrow-light reveal fb" style="justify-content:center">Our Markets</span>
+    <h2 class="reveal fb d1" style="color:var(--white);text-align:center">Trade Regions</h2>
+    <div class="reg-grid">
+      <div class="rc reveal fs"><div class="rc-flag">IN</div><div class="rc-name">India</div><p class="rc-desc">Origin hub for exports — India's manufacturing strength and NVD Group's deep-rooted presence across Maharashtra.</p></div>
+      <div class="rc reveal fs d1"><div class="rc-flag">UAE</div><div class="rc-name">UAE</div><p class="rc-desc">Strategic gateway to Gulf markets — Dubai's position as a global trade hub makes it the ideal entry point.</p></div>
+      <div class="rc reveal fs d2"><div class="rc-flag">SA</div><div class="rc-name">Saudi Arabia</div><p class="rc-desc">A rapidly growing market under Vision 2030 — NVD Group's established presence provides a trusted entry point.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="roadmap">
+  <div class="wrap">
+    <div class="rm-inner">
+      <span class="eyebrow eyebrow-dark reveal fb" style="justify-content:center">Development Roadmap</span>
+      <h2 class="reveal fb d1">Building Something <em>Significant.</em></h2>
+      <p class="reveal fb d2">NVD Exim is in active development. Here's what we're working towards — and how you can be part of it from the beginning.</p>
+      <div class="rm-steps reveal fb d2">
+        <div class="rm-step"><div class="rm-n">1</div><div><h5>Company Registration & Licensing</h5><p>Completing import-export licensing, IEC registration, and trade body affiliations.</p></div></div>
+        <div class="rm-step"><div class="rm-n">2</div><div><h5>Partner Network Development</h5><p>Building a vetted network of suppliers, manufacturers, and buyers across India, UAE, and Saudi Arabia.</p></div></div>
+        <div class="rm-step"><div class="rm-n">3</div><div><h5>Pilot Trade Operations</h5><p>Launching first facilitated trade transactions with early-partner businesses.</p></div></div>
+        <div class="rm-step"><div class="rm-n">4</div><div><h5>Full Commercial Launch</h5><p>Full-scale operations, dedicated website, and onboarding of clients across all three regions.</p></div></div>
+      </div>
+      <div class="notify-wrap reveal fb d3">
+        <p style="font-size:.9rem">Register your interest — be first to know when NVD Exim launches:</p>
+        <div class="notify-form">
+          <input class="ni" id="nEmail" type="email" placeholder="your@email.com"/>
+          <button class="nb" onclick="notifyMe()">Notify Me</button>
+        </div>
+        <div class="n-ok" id="nOk">✓ Thank you! We'll be in touch when NVD Exim launches.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ext-sec">
+  <div class="bldg-bg"></div>
+  <div class="wrap" style="position:relative;z-index:1">
+    <span class="eyebrow eyebrow-light reveal fb" style="justify-content:center">Dedicated Website</span>
+    <h2 class="reveal fb d1" style="color:var(--white)">NVD Exim Website<br/><em style="color:var(--copper)">Coming Soon</em></h2>
+    <p class="reveal fb d2" style="color:rgba(255,255,255,.5);max-width:460px;margin:.75rem auto 0">A dedicated website for NVD Exim is in development and will launch alongside full commercial operations.</p>
+    <div class="reveal fb d3">
+      <a id="eximSiteLink" href="#" class="ext-box" onclick="return false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span class="ext-url" id="eximUrl">URL Coming Soon</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2" stroke-linecap="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+      <div><span class="ext-coming">Launching alongside commercial operations</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div><h2 class="reveal fb" style="color:var(--white)">Interested in Trade?</h2><p class="reveal fb d1">Register interest or enquire about early partnership.</p></div>
+    <div class="cta-btns reveal fb d2"><a href="contact.html" class="btn btn-blue btn-pill">Register Interest</a><a href="mailto:freelance.nvd@gmail.com" class="btn btn-ghost-white btn-pill">Email Us</a></div>
+  </div>
+</div>
+<script src="shared.js"></script>
+<script>
+initPage('exim');
+if(SITE.exim_site&&SITE.exim_site!=='#'){
+  const a=document.getElementById('eximSiteLink');
+  a.href=SITE.exim_site;a.onclick=null;
+  document.getElementById('eximUrl').textContent=SITE.exim_site.replace(/https?:\/\//,'');
+}
+function notifyMe(){
+  const v=document.getElementById('nEmail').value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){document.getElementById('nEmail').classList.add('err');return}
+  document.getElementById('nEmail').classList.remove('err');
+  document.getElementById('nEmail').value='';
+  document.getElementById('nOk').classList.add('show');
+}
+</script>
+</body></html>
